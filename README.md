@@ -7,7 +7,6 @@ This repository contains the test plans, scripts, and documentation for the NESN
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-  - [Project Requirements](#project-requirements)
 - [Test Plans](#test-plans)
   - [Functional Test Plan](#functional-test-plan)
   - [Automated Test Plan](#automated-test-plan)

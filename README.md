@@ -14,8 +14,6 @@ This repository contains the test plans, scripts, and documentation for the NESN
   - [Load Test Plan](#load-test-plan)
 - [Test Scripts](#test-scripts)
   - [API Testing](#api-testing)
-  - [Client Application Testing](#client-application-testing)
-  - [Load Testing](#load-testing)
 - [Running the Tests](#running-the-tests)
 - [Contributing](#contributing)
 - [License](#license)

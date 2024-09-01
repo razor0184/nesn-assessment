@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "3be4c820-e9ea-4cb3-b25a-3cdc44dc1483",
+		"name": "nesn-assessment",
+		"description": "**Objective:**\n\nCreate test scripts to verify the consistency and integrity of the data being returned on two (2) of CompanyB’s endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7955604"
+	},
+	"item": [
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "addComment",
+					"item": [
+						{
+							"name": "verifyStatusCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify the response status code is 201 Created\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Charset",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"foo\",\r\n  \"body\": \"bar\",\r\n  \"userId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyResponseStructure",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify that the response structure includes all expected fields\r",
+											"pm.test(\"Response structure contains all expected fields\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Check if the response contains the 'id' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"\r",
+											"    // Check if the response contains the 'title' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"title\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'body' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"body\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'userId' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"userId\").that.is.a(\"number\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"foo\",\r\n  \"body\": \"bar\",\r\n  \"userId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyMissingFields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify the response status code is 201 Created\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"// Verify that the response body contains the title, body, userId, and an id field\r",
+											"pm.test(\"Response body contains correct fields\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    \r",
+											"    // Check if title and id exist and have correct values\r",
+											"    pm.expect(jsonData).to.have.property(\"title\", \"foo\");\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"foo\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyInvalidDataTypes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify the response status code is 400 Created\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": 1234,\r\n  \"body\": true,\r\n  \"userId\": \"invalid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyEmptyRequest",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify the response status code is 400 Created\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "verifySpecialCharacters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Verify that the response structure includes all expected fields\r",
+											"pm.test(\"Response structure contains all expected fields\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Check if the response contains the 'id' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"\r",
+											"    // Check if the response contains the 'title' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"title\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'body' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"body\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'userId' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"userId\").that.is.a(\"number\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"!@#$%^&*()_+\",\r\n  \"body\": \"!@#$%^&*()_+\",\r\n  \"userId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://jsonplaceholder.typicode.com/posts"
+							},
+							"response": []
+						}
+					],
+					"description": "### **Explanation of the Test Scripts**\n\n- **Status Code Test (Happy Path):** Ensures that the API returns a `200 OK` status, indicating that the request was successful.\n    \n- **Response Structure Test:** Verifies that the JSON response includes all the required fields (`id`, `title`, `body`, `userid`) and that these fields have the correct data types.\n    \n- **Missing Field Values Test:** Verify that the API handles missing fields appropriately when creating a new post.\n    \n- **Invalid Data Type Test:** Verify that the API handles invalid data types in the request body.\n    \n- **Empty Body Test:** Verify that the API handles an empty request body.\n    \n- **Invalid Data Type Test:** Verify that the API correctly handles special characters in the `title` and `body` fields."
+				}
+			],
+			"description": "This folder contains test suites targeting Comment functionality.\n\nTest Suites Included:\n\n- addComment\n    \n- viewComment (TBD)\n    \n- editComment (TBD)\n    \n- deleteComment (TBD)"
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "viewPhoto",
+					"item": [
+						{
+							"name": "verifyStatusCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://jsonplaceholder.typicode.com/photos/1"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyResponseStructure",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response structure contains all expected fields\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Check if the response contains the 'albumId' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"albumId\").that.is.a(\"number\");\r",
+											"\r",
+											"    // Check if the response contains the 'id' field and it is an integer\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"\r",
+											"    // Check if the response contains the 'title' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"title\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'url' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"url\").that.is.a(\"string\");\r",
+											"\r",
+											"    // Check if the response contains the 'thumbnailUrl' field and it is a string\r",
+											"    pm.expect(jsonData).to.have.property(\"thumbnailUrl\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://jsonplaceholder.typicode.com/photos/1"
+							},
+							"response": []
+						},
+						{
+							"name": "verifySpecificFieldValues",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify specific field values\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Check if the albumId is 1\r",
+											"    pm.expect(jsonData.albumId).to.eql(1);\r",
+											"\r",
+											"    // Check if the id is 1\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"\r",
+											"    // Check if the title is correct\r",
+											"    pm.expect(jsonData.title).to.eql(\"accusamus beatae ad facilis cum similique qui sunt\");\r",
+											"\r",
+											"    // Check if the url is correct\r",
+											"    pm.expect(jsonData.url).to.eql(\"https://via.placeholder.com/600/92c952\");\r",
+											"\r",
+											"    // Check if the thumbnailUrl is correct\r",
+											"    pm.expect(jsonData.thumbnailUrl).to.eql(\"https://via.placeholder.com/150/92c952\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://jsonplaceholder.typicode.com/photos/1"
+							},
+							"response": []
+						},
+						{
+							"name": "verifyUrls",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify URL format\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Check if 'url' is a valid URL\r",
+											"    pm.expect(jsonData.url).to.match(/^https?:\\/\\/.+$/);\r",
+											"\r",
+											"    // Check if 'thumbnailUrl' is a valid URL\r",
+											"    pm.expect(jsonData.thumbnailUrl).to.match(/^https?:\\/\\/.+$/);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://jsonplaceholder.typicode.com/photos/1"
+							},
+							"response": []
+						}
+					],
+					"description": "### **Explanation of the Test Scripts**\n\n- **Status Code Test (Happy Path):** Ensures that the API returns a `200 OK` status, indicating that the request was successful.\n    \n- **Response Structure Test:** Verifies that the JSON response includes all the required fields (`albumId`, `id`, `title`, `url`, `thumbnailUrl`) and that these fields have the correct data types.\n    \n- **Specific Field Values Test:** Checks that the values of the fields match the expected data.\n    \n- **URL Format Test:** Validates that the `url` and `thumbnailUrl` fields are formatted as valid URLs"
+				}
+			],
+			"description": "This folder contains test suites targeting Photo functionality.\n\nTest Suites Included:\n\n- viewPhoto\n    \n- addPhoto (TBD)\n    \n- editPhoto (TBD)\n    \n- deletePhoto (TBD)"
+		}
+	]
+}

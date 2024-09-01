@@ -24,6 +24,8 @@ This repository contains the test plans, scripts, and documentation for the NESN
 
 The NESN Assessment project aims to test the integration of CompanyB's API into CompanyA's live streaming platform. The goals are to ensure that the API scales under load, maintains backward compatibility, and integrates seamlessly across multiple client applications.
 
+![Screenshot of the application](https://github.com/razor0184/nesn-assessment/blob/main/LiveStreamingProduct_pipelineDiagram.png)
+
 ## Test Plans
 
 ### Functional Test Plan

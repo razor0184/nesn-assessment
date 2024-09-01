@@ -106,6 +106,9 @@ Automated scripts for validating API endpoints, ensuring data consistency, and h
    - In the **Collection Runner** that opens, configure the run options (e.g., number of iterations, delay between requests).
    - Click **Start Run** to execute all the requests in the collection.
 
+### Demo
+[Click here to watch the video](https://github.com/razor0184/nesn-assessment/blob/main/screen-capture.webm)
+
 ### Additional Resources
 
 - [Postman Documentation](https://learning.postman.com/docs/getting-started/introduction/): Learn more about how to use Postman effectively.

@@ -56,19 +56,19 @@ The NESN Assessment project aims to test the integration of CompanyB's API into 
 
 The functional test plan covers all major functionalities of the integrated API and client applications. It includes scenarios like user authentication, content posting, and viewing, ensuring cross-platform compatibility.
 
-- [Functional Test Plan Document](link-to-functional-test-plan)
+- [Functional Test Plan Document](https://github.com/razor0184/nesn-assessment/blob/main/functionalTestPlan.docx)
 
 ### Automated Test Plan
 
 The automated test plan focuses on reducing manual effort by automating key test cases across API and client applications. Tools like Selenium, Postman, and Appium are recommended.
 
-- [Automated Test Plan Document](link-to-automated-test-plan)
+- [Automated Test Plan Document](https://github.com/razor0184/nesn-assessment/blob/main/automatedTestPlan.docx)
 
 ### Load Test Plan
 
 The load test plan ensures that the platform can handle expected user loads during live streams and identifies the system’s breaking points under stress.
 
-- [Load Test Plan Document](link-to-load-test-plan)
+- [Load Test Plan Document](https://github.com/razor0184/nesn-assessment/blob/main/loadTestPlan.docx)
 
 ## Test Scripts
 

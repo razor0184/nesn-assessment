@@ -7,7 +7,6 @@ This repository contains the test plans, scripts, and documentation for the NESN
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Installation and Setup](#installation-and-setup)
 - [Test Plans](#test-plans)
   - [Functional Test Plan](#functional-test-plan)
   - [Automated Test Plan](#automated-test-plan)
@@ -80,7 +79,7 @@ Automated scripts for validating API endpoints, ensuring data consistency, and h
    - In the Postman app, look for the **Import** button at the top-left corner of the interface and click on it.
 
 2. **Select the JSON File**:
-   - In the Import dialog, click on the **Upload Files** button or drag and drop your JSON file into the window.
+   - In the Import dialog, click on the **Upload Files** button or drag and drop [API Test Scripts](https://github.com/razor0184/nesn-assessment/blob/main/nesn-assessment.postman_collection.json) into the window.
 
 3. **Confirm the Import**:
    - Once your JSON file is selected, Postman will automatically detect it as a collection or environment (depending on the file content).
